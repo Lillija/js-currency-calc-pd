@@ -46,6 +46,17 @@
         const toCurrency = toCurrencyInput.value;
         const amount = parseFloat(amountInput.value);
 
+        let errorsArray = validateUserInput(
+          fromCurrencyInputValue,
+          toCurrencyInputValue
+        );
+
+        if (errorsArray.length > 0) {
+          outputContainer.classList.add("errors");
+          outputContainer.innerHTML = errorsArray.join("<br>");
+          return;
+        }
+
         if (isNaN(amount) || amount <= 0) {
           result.innerHTML = "Ievadi derīgu daudzumu";
         }
